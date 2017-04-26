@@ -26,7 +26,7 @@ namespace QuickMongoApi.DAL
         /// <value>
         /// The dealers.
         /// </value>
-        public IMongoCollection<Employee> Dealers => Database.GetCollection<Employee>("Employees");
+        public IMongoCollection<Employee> Employees => Database.GetCollection<Employee>("Employees");
 
     }
 }

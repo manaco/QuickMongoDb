@@ -31,7 +31,7 @@ namespace QuickMongoApi.Controllers
         /// <returns></returns>
         public async System.Threading.Tasks.Task<IHttpActionResult> Get()
         {
-            var collection = _context.Dealers;
+            var collection = _context.Employees;
             var collaborators = new List<Collaborator>();
 
             await collection.Find(new BsonDocument()).ForEachAsync(d => collaborators.Add(new Collaborator
@@ -54,7 +54,7 @@ namespace QuickMongoApi.Controllers
         /// <returns></returns>
         public IHttpActionResult Post(Collaborator collaborator)
         {
-            var collection = _context.Dealers;
+            var collection = _context.Employees;
 
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace QuickMongoApi.Controllers
 
             if (ModelState.IsValid)
             {
-                var collection = _context.Dealers;
+                var collection = _context.Employees;
                 var filter = Builders<Employee>.Filter.Eq("Email",email);
                 var update = Builders<Employee>.Update.Set("Firstname", collaborator.Name);
                 update.AddToSet("Email", collaborator.Contact);
@@ -104,7 +104,7 @@ namespace QuickMongoApi.Controllers
         {
             try
             {
-                var collection = _context.Dealers;
+                var collection = _context.Employees;
                 var filter = Builders<Employee>.Filter.Eq("Email", email);
                 return Ok(await collection.DeleteManyAsync(filter));
 
